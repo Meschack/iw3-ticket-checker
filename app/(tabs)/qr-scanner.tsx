@@ -138,7 +138,6 @@ const QRScannerScreen = () => {
 
       {mutation.isPending && <ActivityIndicator size="large" color="#007AFF" />}
       {state.error && mutation.error && <Text style={styles.errorMsg}>{state.error}</Text>}
-      {state.qrValue && <Text style={styles.qrText}>QR détecté : {state.qrValue}</Text>}
       {state.scanned && (
         <Button
           title="Scanner un autre code"

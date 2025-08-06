@@ -34,7 +34,10 @@ const ResultScreen = () => {
         <Text style={styles.label}>Check-in à :</Text>
         <Text style={styles.value}>{result.checked_at}</Text>
       </View>
-      <Button title="Scanner un autre code" onPress={() => router.navigate('/(tabs)/qr-scanner')} />
+      <Button
+        title="Scanner un autre code"
+        onPress={() => router.replace({ pathname: '/(tabs)/qr-scanner', params: { edition } })}
+      />
     </View>
   )
 }

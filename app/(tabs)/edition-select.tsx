@@ -85,7 +85,7 @@ const EditionSelectScreen = () => {
         data={editions.data}
         keyExtractor={(item) => item.slug}
         renderItem={renderEdition}
-        contentContainerStyle={{ gap: 16 }}
+        contentContainerStyle={{ gap: 8, paddingHorizontal: 2, paddingBottom: 10 }}
       />
     </View>
   )
@@ -97,19 +97,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
-    padding: 24
+    paddingHorizontal: 12,
+    paddingTop: 40
   },
-  title: { fontSize: 22, fontWeight: 'bold', marginBottom: 32 },
+  title: { fontSize: 22, fontWeight: 'bold', marginBottom: 20 },
   card: {
     backgroundColor: '#f7f7f7',
+    borderColor: '#bbb',
+    borderStyle: 'solid',
+    borderWidth: 1,
     borderRadius: 12,
     padding: 20,
-    width: 320,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 4,
-    elevation: 2
+    width: 320
   },
   cardTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 6 },
   cardDate: { fontSize: 14, color: '#007AFF', marginBottom: 4 },

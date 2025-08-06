@@ -17,18 +17,19 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({ ios: { position: 'absolute' }, default: {} })
+        tabBarStyle: Platform.select({ ios: { position: 'absolute' } })
       }}
     >
       <Tabs.Screen name="index" options={{ href: null }} />
       <Tabs.Screen name="sign-in" options={{ href: null }} />
       <Tabs.Screen name="result" options={{ href: null }} />
-      <Tabs.Screen name="qr-scanner" options={{ href: null }} />
+      <Tabs.Screen name="qr-scanner" options={{ href: null, headerShown: false }} />
       <Tabs.Screen
         name="edition-select"
         options={{
           title: 'Éditions',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.3.fill" color={color} />
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.3.fill" color={color} />,
+          headerShown: false
         }}
       />
       <Tabs.Screen
@@ -37,7 +38,8 @@ export default function TabLayout() {
           title: 'Compte',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="person.crop.circle.fill" color={color} />
-          )
+          ),
+          headerShown: false
         }}
       />
     </Tabs>

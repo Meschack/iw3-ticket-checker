@@ -4,8 +4,6 @@ import * as SecureStore from 'expo-secure-store'
 
 const baseURL = process.env.EXPO_PUBLIC_BACKEND_URL
 
-console.log({ baseURL })
-
 export const authClient = createAuthClient({
   baseURL,
   plugins: [

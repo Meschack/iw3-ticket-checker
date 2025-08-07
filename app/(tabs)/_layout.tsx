@@ -20,9 +20,9 @@ export default function TabLayout() {
         tabBarStyle: Platform.select({ ios: { position: 'absolute' } })
       }}
     >
-      <Tabs.Screen name="index" options={{ href: null }} />
-      <Tabs.Screen name="sign-in" options={{ href: null }} />
-      <Tabs.Screen name="result" options={{ href: null }} />
+      <Tabs.Screen name="index" options={{ href: null, headerShown: false }} />
+      <Tabs.Screen name="sign-in" options={{ href: null, headerShown: false }} />
+      <Tabs.Screen name="result" options={{ href: null, headerShown: false }} />
       <Tabs.Screen name="qr-scanner" options={{ href: null, headerShown: false }} />
       <Tabs.Screen
         name="edition-select"

@@ -1,5 +1,6 @@
+import { CustomButton } from '@/components/ui/Button'
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 const ResultScreen = () => {
   const router = useRouter()
@@ -11,7 +12,7 @@ const ResultScreen = () => {
     return (
       <View style={styles.container}>
         <Text style={styles.error}>Aucun résultat à afficher.</Text>
-        <Button
+        <CustomButton
           title="Retour au scan"
           onPress={() => router.replace({ pathname: '/(tabs)/qr-scanner', params: { edition } })}
         />
@@ -22,6 +23,7 @@ const ResultScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.success}>✔️ Check-in réussi !</Text>
+
       <View style={styles.infoBox}>
         <Text style={styles.label}>Nom :</Text>
         <Text style={styles.value}>{result.name}</Text>
@@ -34,7 +36,8 @@ const ResultScreen = () => {
         <Text style={styles.label}>Check-in à :</Text>
         <Text style={styles.value}>{result.checked_at}</Text>
       </View>
-      <Button
+
+      <CustomButton
         title="Scanner un autre code"
         onPress={() => router.replace({ pathname: '/(tabs)/qr-scanner', params: { edition } })}
       />

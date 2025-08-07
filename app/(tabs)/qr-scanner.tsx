@@ -1,3 +1,4 @@
+import { CustomButton } from '@/components/ui/Button'
 import { authClient } from '@/lib/auth-client'
 import { ApplicationError, fetcher } from '@/lib/fetcher'
 import { useIsFocused } from '@react-navigation/native'
@@ -5,7 +6,7 @@ import { useMutation } from '@tanstack/react-query'
 import { CameraView, useCameraPermissions, type BarcodeScanningResult } from 'expo-camera'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useEffect, useRef, useState } from 'react'
-import { ActivityIndicator, Button, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
 
 interface State {
   scanned: boolean
@@ -50,7 +51,7 @@ const QRScannerScreen = () => {
   const [state, setState] = useState<State>({ scanned: false, qrValue: null })
   const cameraRef = useRef<CameraView | null>(null)
   const [permission, requestPermission] = useCameraPermissions()
-  const { edition } = useLocalSearchParams()
+  const { slug, title } = useLocalSearchParams()
   const isFocused = useIsFocused()
 
   const mutation = useMutation({
@@ -62,7 +63,7 @@ const QRScannerScreen = () => {
       setState({ scanned: false, qrValue: null })
       router.replace({
         pathname: '/(tabs)/result',
-        params: { result: JSON.stringify(data), edition }
+        params: { result: JSON.stringify(data), edition: slug }
       })
     },
     onError: (error: ApplicationError<{ error: string }>) => {
@@ -71,10 +72,10 @@ const QRScannerScreen = () => {
   })
 
   const handleBarCodeScanned = (result: BarcodeScanningResult) => {
-    if (!state.scanned && edition) {
+    if (!state.scanned && slug) {
       if (mutation.error) mutation.reset()
       setState((prev) => ({ ...prev, scanned: true, qrValue: result.data }))
-      mutation.mutate({ participant_id: result.data, edition_slug: edition as string })
+      mutation.mutate({ participant_id: result.data, edition_slug: slug as string })
     }
   }
 
@@ -85,11 +86,12 @@ const QRScannerScreen = () => {
     }
   }, [session, isPending, router])
 
-  if (!edition) {
+  if (!slug) {
     return (
       <View style={styles.container}>
         <Text style={styles.error}>Aucune édition sélectionnée !</Text>
-        <Button
+
+        <CustomButton
           title="Sélectionner une édition"
           onPress={() => router.replace('/(tabs)/edition-select')}
         />
@@ -115,7 +117,7 @@ const QRScannerScreen = () => {
         <Text style={styles.message}>
           Nous avons besoin de votre permission pour afficher la caméra
         </Text>
-        <Button onPress={requestPermission} title="grant permission" />
+        <CustomButton title="grant permission" onPress={requestPermission} />
       </View>
     )
   }
@@ -123,7 +125,11 @@ const QRScannerScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Scanner un QR code</Text>
-      <Text style={styles.edition}>Édition sélectionnée : {edition}</Text>
+
+      <View style={{ width: '100%' }}>
+        <Text style={{ ...styles.edition, fontWeight: '600' }}>{title}</Text>
+      </View>
+
       <View style={styles.cameraContainer}>
         {isFocused && (
           <CameraView
@@ -136,24 +142,32 @@ const QRScannerScreen = () => {
         )}
       </View>
 
-      {mutation.isPending && <ActivityIndicator size="large" color="#007AFF" />}
-      {state.error && mutation.error && <Text style={styles.errorMsg}>{state.error}</Text>}
-      {state.scanned && (
-        <Button
-          title="Scanner un autre code"
+      <View style={{ display: 'flex', gap: 5, width: '100%', flexDirection: 'column' }}>
+        {mutation.isPending && <ActivityIndicator size="large" color="#007AFF" />}
+
+        {state.error && mutation.error && (
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorMsg}>{state.error}</Text>
+          </View>
+        )}
+
+        {state.scanned && (
+          <CustomButton
+            title="Scanner un autre code"
+            onPress={() => {
+              setState((prev) => ({ ...prev, scanned: false, qrValue: null, error: undefined }))
+            }}
+          />
+        )}
+
+        <CustomButton
+          title="Changer d'édition"
           onPress={() => {
-            setState((prev) => ({ ...prev, scanned: false, qrValue: null, error: undefined }))
+            setState((prev) => ({ ...prev, error: undefined, scanned: false, qrValue: null }))
+            router.replace('/(tabs)/edition-select')
           }}
         />
-      )}
-
-      <Button
-        title="Changer d'édition"
-        onPress={() => {
-          setState((prev) => ({ ...prev, error: undefined, scanned: false, qrValue: null }))
-          router.replace('/(tabs)/edition-select')
-        }}
-      />
+      </View>
     </View>
   )
 }
@@ -168,18 +182,26 @@ const styles = StyleSheet.create({
   },
   message: { textAlign: 'center', paddingBottom: 10 },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 12 },
-  edition: { fontSize: 16, color: '#007AFF', marginBottom: 16 },
+  edition: { fontSize: 16, textAlign: 'left', color: '#183376', marginBottom: 16 },
   cameraContainer: {
-    width: 320,
-    height: 320,
+    width: '100%',
+    aspectRatio: 1 / 1,
     borderRadius: 16,
     overflow: 'hidden',
     marginBottom: 16
   },
   camera: { flex: 1 },
-  qrText: { fontSize: 16, color: '#333', marginBottom: 12 },
-  errorMsg: { color: 'red', marginBottom: 12, textAlign: 'center' },
-  error: { color: 'red', marginBottom: 24, fontSize: 16 }
+  errorContainer: {
+    borderColor: '#e7000b',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    width: '100%',
+    backgroundColor: '#ffa2a2',
+    padding: 10,
+    borderRadius: 6
+  },
+  errorMsg: { color: '#e7000b', textAlign: 'center', fontWeight: '500' },
+  error: { color: '#e7000b', marginBottom: 24, fontSize: 16 }
 })
 
 export default QRScannerScreen

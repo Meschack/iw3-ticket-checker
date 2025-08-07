@@ -1,7 +1,8 @@
+import { CustomButton } from '@/components/ui/Button'
 import { authClient } from '@/lib/auth-client'
 import { useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'
-import { ActivityIndicator, Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-native'
 
 const SignInScreen = () => {
   const [email, setEmail] = useState('')
@@ -96,13 +97,16 @@ const SignInScreen = () => {
         onChangeText={setPassword}
       />
       {error && <Text style={styles.error}>{error}</Text>}
-      <Button
+
+      <CustomButton
         title={loading ? 'Connexion...' : 'Connexion'}
         onPress={handleLogin}
         disabled={loading}
       />
-      <View style={{ height: 16 }} />
-      <Button title="Connexion avec Google" onPress={handleGoogle} disabled={loading} />
+
+      <View style={{ height: 10 }} />
+
+      <CustomButton onPress={handleGoogle} title="Connexion avec Google" disabled={loading} />
     </View>
   )
 }
@@ -117,7 +121,7 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 32 },
   input: {
-    width: 280,
+    width: '100%',
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,

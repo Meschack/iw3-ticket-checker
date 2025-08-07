@@ -41,12 +41,15 @@ const EditionSelectScreen = () => {
     }
   }, [edition, router])
 
-  const handleSelectEdition = (slug: string) => {
-    router.replace({ pathname: '/(tabs)/qr-scanner', params: { edition: slug } })
+  const handleSelectEdition = (slug: string, title: string) => {
+    router.replace({ pathname: '/(tabs)/qr-scanner', params: { slug, title } })
   }
 
   const renderEdition = ({ item }: { item: Edition }) => (
-    <TouchableOpacity style={styles.card} onPress={() => handleSelectEdition(item.slug)}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => handleSelectEdition(item.slug, item.title)}
+    >
       <Text style={styles.cardTitle}>{item.title}</Text>
       <Text style={styles.cardDate}>{item.start_date}</Text>
       <Text style={styles.cardDesc}>{item.description}</Text>

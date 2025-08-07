@@ -1,12 +1,12 @@
 import { Tabs } from 'expo-router'
 import React from 'react'
-import { Platform } from 'react-native'
 
 import { HapticTab } from '@/components/HapticTab'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import TabBarBackground from '@/components/ui/TabBarBackground'
 import { Colors } from '@/constants/Colors'
 import { useColorScheme } from '@/hooks/useColorScheme'
+import { Platform } from 'react-native'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
@@ -28,7 +28,7 @@ export default function TabLayout() {
         name="edition-select"
         options={{
           title: 'Éditions',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.3.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={20} name="calendar" color={color} />,
           headerShown: false
         }}
       />
@@ -37,7 +37,7 @@ export default function TabLayout() {
         options={{
           title: 'Compte',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="person.crop.circle.fill" color={color} />
+            <IconSymbol size={20} name="person.crop.circle.fill" color={color} />
           ),
           headerShown: false
         }}

@@ -22,20 +22,21 @@ const SignInScreen = () => {
   const handleLogin = async () => {
     setLoading(true)
     setError(null)
+
+    const url = process.env.EXPO_PUBLIC_BACKEND_URL
+
     try {
       const response = await authClient.signIn.email({ email, password })
 
       if (response.error) {
         console.log(response.error)
-        setError(response.error.message || 'Erreur lors de la connexion')
+        setError(JSON.stringify({ ...response.error, url }) || 'Erreur lors de la connexion')
         return
       }
 
-      console.log(response.data)
-
       router.replace('/(tabs)/edition-select')
     } catch (e: any) {
-      setError(e?.message || 'Erreur lors de la connexion')
+      setError(JSON.stringify({ e, url }) || 'Erreur lors de la connexion')
     } finally {
       setLoading(false)
     }
@@ -44,6 +45,9 @@ const SignInScreen = () => {
   const handleGoogle = async () => {
     setLoading(true)
     setError(null)
+
+    const url = process.env.EXPO_PUBLIC_BACKEND_URL
+
     try {
       const response = await authClient.signIn.social({
         provider: 'google',
@@ -52,15 +56,13 @@ const SignInScreen = () => {
 
       if (response.error) {
         console.log(response.error)
-        setError(response.error.message || 'Erreur Google Sign-In')
+        setError(JSON.stringify({ ...response.error, url }) || 'Erreur Google Sign-In')
         return
       }
 
-      console.log(response.data)
-
       router.replace('/(tabs)/edition-select')
     } catch (e: any) {
-      setError(e?.message || 'Erreur Google Sign-In')
+      setError(JSON.stringify({ e, url }) || 'Erreur Google Sign-In')
     } finally {
       setLoading(false)
     }

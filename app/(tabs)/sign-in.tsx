@@ -23,20 +23,17 @@ const SignInScreen = () => {
     setLoading(true)
     setError(null)
 
-    const url = process.env.EXPO_PUBLIC_BACKEND_URL
-
     try {
       const response = await authClient.signIn.email({ email, password })
 
       if (response.error) {
-        console.log(response.error)
-        setError(JSON.stringify({ ...response.error, url }) || 'Erreur lors de la connexion')
+        setError(response.error.message ?? 'Erreur lors de la connexion')
         return
       }
 
       router.replace('/(tabs)/edition-select')
     } catch (e: any) {
-      setError(JSON.stringify({ e, url }) || 'Erreur lors de la connexion')
+      setError(e?.message || 'Erreur lors de la connexion')
     } finally {
       setLoading(false)
     }

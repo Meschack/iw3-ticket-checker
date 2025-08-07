@@ -18,7 +18,7 @@
     "@expo/vector-icons": "~14.0.4",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/elements": "^2.3.8",
-    "@react-navigation/native": "^7.1.17",
+    "@react-navigation/native": "^7.0.14",
     "@tanstack/react-query": "^5.84.1",
     "better-auth": "^1.2.12",
     "expo": "~52.0.47",
@@ -30,7 +30,7 @@
     "expo-image": "~2.0.7",
     "expo-linking": "~7.0.5",
     "expo-router": "~4.0.21",
-    "expo-secure-store": "^14.0.1",
+    "expo-secure-store": "~14.0.1",
     "expo-splash-screen": "~0.29.24",
     "expo-status-bar": "~2.0.1",
     "expo-symbols": "~0.2.2",
@@ -54,6 +54,13 @@
     "eslint-config-expo": "~8.0.1",
     "prettier": "^3.6.2",
     "typescript": "~5.8.3"
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    }
   },
   "private": true
 }

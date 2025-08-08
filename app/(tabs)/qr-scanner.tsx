@@ -102,7 +102,7 @@ const QRScannerScreen = () => {
           </Text>
           <CustomButton
             title="Sélectionner une édition"
-            onPress={() => router.replace('/(tabs)/edition-select')}
+            onPress={() => router.replace('/(tabs)')}
             style={styles.primaryButton}
             icon={<Ionicons name="calendar-outline" size={20} color="#fff" />}
           />
@@ -226,7 +226,7 @@ const QRScannerScreen = () => {
           title="Changer d'édition"
           onPress={() => {
             setState((prev) => ({ ...prev, error: undefined, scanned: false, qrValue: null }))
-            router.replace('/(tabs)/edition-select')
+            router.replace('/(tabs)')
           }}
           style={styles.secondaryButton}
           icon={<Ionicons name="swap-horizontal-outline" size={20} color="#fff" />}
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
   authButton: { backgroundColor: '#183376', width: '100%', maxWidth: 300 },
   retryButton: { backgroundColor: '#FF9500', width: '100%', maxWidth: 300 },
   secondaryButton: { backgroundColor: '#6B7280', width: '100%', maxWidth: 300 },
-  header: { alignItems: 'center', marginBottom: 24 },
+  header: { alignItems: 'center', marginVertical: 24 },
   title: {
     fontSize: Typography.sizes.xxxl,
     fontFamily: Typography.fonts.default,

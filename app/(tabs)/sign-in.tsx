@@ -15,7 +15,7 @@ const SignInScreen = () => {
   useEffect(() => {
     if (isPending) return
     if (session) {
-      router.replace('/(tabs)/edition-select')
+      router.replace('/(tabs)')
     }
   }, [session, isPending, router])
 
@@ -31,7 +31,7 @@ const SignInScreen = () => {
         return
       }
 
-      router.replace('/(tabs)/edition-select')
+      router.replace('/(tabs)')
     } catch (e: any) {
       setError(e?.message || 'Erreur lors de la connexion')
     } finally {
@@ -39,14 +39,14 @@ const SignInScreen = () => {
     }
   }
 
-  const handleGoogle = async () => {
+  /* const handleGoogle = async () => {
     setLoading(true)
     setError(null)
 
     try {
       const response = await authClient.signIn.social({
         provider: 'google',
-        callbackURL: 'iw3ticketchecker://(tabs)/edition-select'
+        callbackURL: 'iw3ticketchecker://(tabs)'
       })
 
       if (response.error) {
@@ -54,13 +54,13 @@ const SignInScreen = () => {
         return
       }
 
-      router.replace('/(tabs)/edition-select')
+      router.replace('/(tabs)')
     } catch (e: any) {
       setError(e.message || 'Erreur Google Sign-In')
     } finally {
       setLoading(false)
     }
-  }
+  } */
 
   if (isPending) {
     return (
@@ -100,9 +100,8 @@ const SignInScreen = () => {
         disabled={loading}
       />
 
-      <View style={{ height: 10 }} />
-
-      <CustomButton onPress={handleGoogle} title="Connexion avec Google" disabled={loading} />
+      {/* <View style={{ height: 10 }} />
+      <CustomButton onPress={handleGoogle} title="Connexion avec Google" disabled={loading} /> */}
     </View>
   )
 }

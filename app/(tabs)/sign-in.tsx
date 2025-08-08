@@ -43,23 +43,20 @@ const SignInScreen = () => {
     setLoading(true)
     setError(null)
 
-    const url = process.env.EXPO_PUBLIC_BACKEND_URL
-
     try {
       const response = await authClient.signIn.social({
         provider: 'google',
-        callbackURL: '/(tabs)/edition-select'
+        callbackURL: 'iw3ticketchecker://(tabs)/edition-select'
       })
 
       if (response.error) {
-        console.log(response.error)
-        setError(JSON.stringify({ ...response.error, url }) || 'Erreur Google Sign-In')
+        setError(response.error.message || 'Erreur Google Sign-In')
         return
       }
 
       router.replace('/(tabs)/edition-select')
     } catch (e: any) {
-      setError(JSON.stringify({ e, url }) || 'Erreur Google Sign-In')
+      setError(e.message || 'Erreur Google Sign-In')
     } finally {
       setLoading(false)
     }

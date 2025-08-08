@@ -1,3 +1,4 @@
+import { Typography } from '@/constants/Typography'
 import React, { ComponentProps, ReactNode } from 'react'
 import {
   Button,
@@ -35,9 +36,9 @@ export const CustomButton = ({
     disabled={disabled}
   >
     <View style={styles.content}>
-      {icon && iconPosition === 'left' && <View style={styles.iconLeft}>{icon}</View>}
+      {icon && iconPosition === 'left' && <View>{icon}</View>}
       <Text style={[styles.text, titleStyle]}>{title}</Text>
-      {icon && iconPosition === 'right' && <View style={styles.iconRight}>{icon}</View>}
+      {icon && iconPosition === 'right' && <View>{icon}</View>}
     </View>
   </TouchableOpacity>
 )
@@ -51,9 +52,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%'
   },
-  content: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
+  content: { flexDirection: 'row', alignItems: 'center', gap: 8, justifyContent: 'center' },
   disabled: { backgroundColor: '#9ca3af' },
-  text: { color: '#fff', fontSize: 16 },
-  iconLeft: { marginRight: 8 },
-  iconRight: { marginLeft: 8 }
+  text: {
+    color: '#fff',
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.medium
+  }
 })

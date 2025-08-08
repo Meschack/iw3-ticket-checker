@@ -1,4 +1,5 @@
 import { CustomButton } from '@/components/ui/Button'
+import { Typography } from '@/constants/Typography'
 import { authClient } from '@/lib/auth-client'
 import { fetcher } from '@/lib/utils'
 import { Ionicons } from '@expo/vector-icons'
@@ -174,11 +175,22 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0'
   },
-  title: { fontSize: 22, fontWeight: 'bold', color: '#333', textAlign: 'center' },
+  title: {
+    fontSize: Typography.sizes.xxl,
+    fontFamily: Typography.fonts.bold,
+    fontWeight: Typography.weights.bold,
+    color: '#333',
+    textAlign: 'center'
+  },
   list: { paddingHorizontal: 24 },
   listContent: { flexGrow: 1, paddingVertical: 20, gap: 8 },
   emptyContainer: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: 32 },
-  emptyText: { fontSize: 16, color: '#666', textAlign: 'center' },
+  emptyText: {
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    color: '#666',
+    textAlign: 'center'
+  },
   fallbackContainer: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
   loadingIconContainer: {
     width: 80,
@@ -223,22 +235,30 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   loadingText: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: Typography.sizes.lg,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.semibold,
     color: '#333',
     marginBottom: 8,
     textAlign: 'center'
   },
-  loadingSubtext: { fontSize: 14, color: '#666', textAlign: 'center' },
+  loadingSubtext: {
+    fontSize: Typography.sizes.sm,
+    fontFamily: Typography.fonts.default,
+    color: '#666',
+    textAlign: 'center'
+  },
   errorTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: Typography.sizes.xl,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
     color: '#333',
     marginBottom: 12,
     textAlign: 'center'
   },
   errorText: {
-    fontSize: 16,
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
     color: '#666',
     textAlign: 'center',
     lineHeight: 22,
@@ -256,10 +276,33 @@ const styles = StyleSheet.create({
     padding: 20,
     width: '100%'
   },
-  cardTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 6, color: '#333' },
-  cardDate: { fontSize: 14, color: '#183376', marginBottom: 4, fontWeight: '500' },
-  cardDesc: { fontSize: 14, color: '#666', marginBottom: 4, lineHeight: 20 },
-  cardLocation: { fontSize: 13, color: '#888', fontStyle: 'italic' }
+  cardTitle: {
+    fontSize: Typography.sizes.lg,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
+    marginBottom: 6,
+    color: '#333'
+  },
+  cardDate: {
+    fontSize: Typography.sizes.sm,
+    fontFamily: Typography.fonts.default,
+    color: '#183376',
+    marginBottom: 4,
+    fontWeight: Typography.weights.medium
+  },
+  cardDesc: {
+    fontSize: Typography.sizes.sm,
+    fontFamily: Typography.fonts.default,
+    color: '#666',
+    marginBottom: 4,
+    lineHeight: 20
+  },
+  cardLocation: {
+    fontSize: Typography.sizes.xs,
+    fontFamily: Typography.fonts.default,
+    color: '#888',
+    fontStyle: 'italic'
+  }
 })
 
 export default EditionSelectScreen

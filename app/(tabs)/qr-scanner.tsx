@@ -1,4 +1,5 @@
 import { CustomButton } from '@/components/ui/Button'
+import { Typography } from '@/constants/Typography'
 import { authClient } from '@/lib/auth-client'
 import { ApplicationError, fetcher } from '@/lib/fetcher'
 import { Ionicons } from '@expo/vector-icons'
@@ -269,37 +270,45 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   loadingText: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: Typography.sizes.lg,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.semibold,
     color: '#333',
     marginBottom: 8,
     textAlign: 'center'
   },
-  loadingSubtext: { fontSize: 14, color: '#666', textAlign: 'center' },
+  loadingSubtext: {
+    fontSize: Typography.sizes.sm,
+    fontFamily: Typography.fonts.default,
+    color: '#666',
+    textAlign: 'center'
+  },
   errorTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: Typography.sizes.xl,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
     color: '#333',
     marginBottom: 12,
     textAlign: 'center'
   },
   errorText: {
-    fontSize: 16,
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
     color: '#666',
     textAlign: 'center',
     lineHeight: 22,
     marginBottom: 24,
     paddingHorizontal: 20
   },
-  primaryButton: { backgroundColor: '#183376', width: '100%' },
-  authButton: { backgroundColor: '#183376', width: '100%' },
-  retryButton: { backgroundColor: '#FF9500', width: '100%' },
-  secondaryButton: { backgroundColor: '#6B7280', width: '100%' },
+  primaryButton: { backgroundColor: '#183376', width: '100%', maxWidth: 300 },
+  authButton: { backgroundColor: '#183376', width: '100%', maxWidth: 300 },
+  retryButton: { backgroundColor: '#FF9500', width: '100%', maxWidth: 300 },
+  secondaryButton: { backgroundColor: '#6B7280', width: '100%', maxWidth: 300 },
   header: { alignItems: 'center', marginBottom: 24 },
   title: {
-    fontSize: 24,
-    paddingTop: 20,
-    fontWeight: 'bold',
+    fontSize: Typography.sizes.xxxl,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
     color: '#333',
     marginBottom: 12,
     textAlign: 'center'
@@ -317,7 +326,13 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 2
   },
-  edition: { fontSize: 16, fontWeight: '600', color: '#183376', marginLeft: 8 },
+  edition: {
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.semibold,
+    color: '#183376',
+    marginLeft: 8
+  },
   cameraContainer: {
     width: '100%',
     aspectRatio: 1 / 1,
@@ -353,29 +368,41 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: -40,
     color: '#fff',
-    fontSize: 14,
-    fontWeight: '500',
+    fontSize: Typography.sizes.sm,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.medium,
     textAlign: 'center',
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 2
   },
-  controlsContainer: { gap: 8, alignItems: 'center', width: '100%' },
+  controlsContainer: { gap: 16, alignItems: 'center' },
   loadingContainer: { alignItems: 'center', paddingVertical: 16 },
-  processingText: { marginTop: 8, fontSize: 14, color: '#666', textAlign: 'center' },
+  processingText: {
+    marginTop: 8,
+    fontSize: Typography.sizes.sm,
+    fontFamily: Typography.fonts.default,
+    color: '#666',
+    textAlign: 'center'
+  },
   errorContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#FFEBEE',
     borderColor: '#FF3B30',
     borderWidth: 1,
     borderRadius: 8,
     padding: 12,
-    width: '100%',
-    gap: 8
+    width: '100%'
   },
-  errorMsg: { color: '#FF3B30', fontSize: 14, fontWeight: '500' }
+  errorMsg: {
+    color: '#FF3B30',
+    fontSize: Typography.sizes.sm,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.medium,
+    marginLeft: 8,
+    flex: 1
+  }
 })
 
 export default QRScannerScreen

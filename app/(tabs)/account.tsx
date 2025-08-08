@@ -1,3 +1,4 @@
+import { Typography } from '@/constants/Typography'
 import { authClient } from '@/lib/auth-client'
 import { User } from '@/lib/types'
 import { Ionicons } from '@expo/vector-icons'
@@ -228,14 +229,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff'
   },
-  loadingText: { marginTop: 12, fontSize: 16, color: '#666' },
+  loadingText: {
+    marginTop: 12,
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    color: '#666'
+  },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
-  errorText: { marginTop: 12, fontSize: 16, color: '#666' },
+  errorText: {
+    marginTop: 12,
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    color: '#666'
+  },
   header: {
     backgroundColor: '#fff',
     padding: 24,
@@ -282,11 +293,34 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#fff'
   },
-  roleText: { color: '#fff', fontSize: 10, fontWeight: 'bold', textTransform: 'uppercase' },
-  name: { fontSize: 24, fontWeight: 'bold', color: '#333', marginBottom: 4 },
-  email: { fontSize: 16, color: '#666', marginBottom: 8 },
+  roleText: {
+    color: '#fff',
+    fontSize: Typography.sizes.xs,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
+    textTransform: 'uppercase'
+  },
+  name: {
+    fontSize: Typography.sizes.xxxl,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
+    color: '#333',
+    marginBottom: 4
+  },
+  email: {
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    color: '#666',
+    marginBottom: 8
+  },
   section: { marginTop: 24, paddingHorizontal: 24 },
-  sectionTitle: { fontSize: 18, fontWeight: 'bold', color: '#333', marginBottom: 12 },
+  sectionTitle: {
+    fontSize: Typography.sizes.lg,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
+    color: '#333',
+    marginBottom: 12
+  },
   infoCard: {
     backgroundColor: '#fff',
     borderRadius: 12,
@@ -306,9 +340,24 @@ const styles = StyleSheet.create({
     borderBottomColor: '#f0f0f0'
   },
   infoContent: { flex: 1, marginLeft: 12 },
-  infoLabel: { fontSize: 12, color: '#666', marginBottom: 2 },
-  infoValue: { fontSize: 16, color: '#333', fontWeight: '500' },
-  descriptionText: { fontSize: 16, color: '#333', lineHeight: 24 },
+  infoLabel: {
+    fontSize: Typography.sizes.xs,
+    fontFamily: Typography.fonts.default,
+    color: '#666',
+    marginBottom: 2
+  },
+  infoValue: {
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    color: '#333',
+    fontWeight: Typography.weights.medium
+  },
+  descriptionText: {
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    color: '#333',
+    lineHeight: 24
+  },
   socialRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -316,7 +365,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f0'
   },
-  socialText: { flex: 1, fontSize: 16, color: '#333', marginLeft: 12 },
+  socialText: {
+    flex: 1,
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    color: '#333',
+    marginLeft: 12
+  },
   logoutButton: {
     backgroundColor: '#FF3B30',
     flexDirection: 'row',
@@ -330,7 +385,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3
   },
-  logoutText: { color: '#fff', fontSize: 16, fontWeight: 'bold', marginLeft: 8 }
+  logoutText: {
+    color: '#fff',
+    fontSize: Typography.sizes.base,
+    fontFamily: Typography.fonts.default,
+    fontWeight: Typography.weights.bold,
+    marginLeft: 8
+  }
 })
 
 export default AccountScreen
